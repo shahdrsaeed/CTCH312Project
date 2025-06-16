@@ -1,0 +1,72 @@
+Mechanics
+
+	Inscribed
+		Basic Mechanics:
+		Planet Hope is a single player 3D Exploration Game.
+		Players explore 3D environment using standard wasd style controls.
+		They can walk, run, jump, etc.
+		Our twist is to use spherical planets with gravity pointing inward.
+		Players can explore the whole planet with no boundary but being held down by gravity.
+		The player cannot walk up a slope if it's too steep, and must find another way around.
+		Each planet has its own size and gravity. As well as a unique environment to explore.
+		
+		Player Goals/Objectives:
+		Player starts inside the ship, and can see multiple possible destinations.
+		Only one location is unlocked, the others require collecting some amount of gems, the primary resource.
+		Gem collecting is the short term goal.
+		There are signs showing the required number of gems to unlock each planet.
+		To unlock a planet there will typically be a choice between many gems from an earlier planet, or fewer gems from a later planet.
+		Players will collect gems found in the environment by walking into them.
+		Gems make a pleasant sound when collected.
+		Gems are typically placed in trails to guide the player to new locations, or in rings to reward the player.
+		If the player spends too long on the planet, a monster will come directly for them.
+		Monster can scale all terrain and comes directly for the player.
+		The monster plays a sound effect to alert the player.
+		If the monster touches the player, it's game over.
+		As the player advances to new levels, the monster becomes faster and releases sooner, increasing the difficulty.
+		Visiting new planets is the mid term goal.
+		If the player collects enough gems to unlock planet hope, they win. Planet Hope is the long term goal.
+
+	Dynamic
+		Players will experience the discovery of new locations as they appear over the horizon.
+		They will traverse the environment in a brand new way. Even a few possible locations can lead to many possible paths.
+		Unlocking the planet integrates the player's actions (gem collection) with the rewarding outcome.
+		Gems make a pleasant sound when collected to make collection discernable and meaningful.
+		Players may choose different gem collecting strategies.
+		They can collect as few in each level as possible to move on to the next level, and play through each level.
+		Or they can collect as many gems as possible to play through as few levels as possible.
+		Players can explore, speed-run, or go for 100% completion.
+
+	Cultural
+		Custom Levels and Player Mods:
+		Players can easily use the techniques used by the developers to make their own planets.
+		Players could make a mod with a monster free world they can use as a sandbox builder.
+		Or a multiplayer mod for fighting eachother.
+
+Technology
+	Inscribed
+		Unity:
+		Most important piece of technology to implement the game is, of course, unity.
+		We had to build our own control object from scratch, since the CharacterController component and the RigidBody component didn't play nice together.
+		Each component was fighting for control of the object's transform.
+		We built a RigidBody based controller since thats the component that allows for adding forces.
+		CharacterController gravity couldn't point inwards.
+		Unity terrain sculptor was also used to sculpt the heightmap net of for the planets.
+	Dynamic
+		RigidBody Controller:
+		The RigidBody component allows us to constantly adds a gravitational force to the player pointing towards the center of the planet, and rotates them so they are upright.
+		This allows them to walk around the spherical world.
+		The code checks the collision contacts and looks at the normal vector.
+		The normal vector is compared to the local upward direction to calculate the slope.
+		If the slope is too high, the player cannot control the character's lateral motion and will slide down.
+		To prevent the player getting stuck in v shaped pits, the code also looks at the average normal vector of all the collisions.
+	Cultural
+		Players could make a custom planet building tool to assist in planet building.
+		The technology used to build and explore planets could be repurposed for education purposes.
+		To explore real-world planets, or other impossible to access environments such as the microscopic world.
+
+
+
+
+
+
